@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 
 const SUPPORT_EMAIL = 'support@smashfood.com';
@@ -79,7 +80,7 @@ export default function PrivacyPolicy() {
       </ul>
       <p>
         To delete your account and associated data, see our{' '}
-        <a href="/data-deletion">Data Deletion</a> page or contact us at{' '}
+        <Link to="/data-deletion">Data Deletion</Link> page or contact us at{' '}
         <a href={`mailto:${SUPPORT_EMAIL}`} className="contact-email">
           {SUPPORT_EMAIL}
         </a>

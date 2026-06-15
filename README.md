@@ -25,11 +25,13 @@ Upload the `dist/` folder to any static host (Vercel, Netlify, GitHub Pages, Clo
 
 ## Play Console URLs
 
-After deploying (example with `https://legal.smashfood.com`):
+Live on GitHub Pages:
 
 | Field | URL |
 |-------|-----|
-| Privacy policy | `https://legal.smashfood.com/privacy-policy` |
-| Data deletion | `https://legal.smashfood.com/data-deletion` |
+| Privacy policy | https://pythra.github.io/smashfood-legal/privacy-policy |
+| Data deletion | https://pythra.github.io/smashfood-legal/data-deletion |
+
+Enable **Settings → Pages → Source: GitHub Actions** in the repo if the site does not appear after the first push.
 
 Update `SUPPORT_EMAIL` in `src/pages/PrivacyPolicy.jsx` and `src/pages/DataDeletion.jsx` if needed.
