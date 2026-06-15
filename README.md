@@ -25,15 +25,18 @@ Upload the `dist/` folder to any static host (Vercel, Netlify, GitHub Pages, Clo
 
 ## GitHub Pages setup (required)
 
-If you see **"There isn't a GitHub Pages site here"**, fix the source in repo settings:
+The site is published from the **`docs/`** folder on the **`main`** branch.
 
 1. Open **https://github.com/Pythra/smashfood-legal/settings/pages**
-2. **Build and deployment → Source:** choose **Deploy from a branch** (not GitHub Actions)
-3. **Branch:** `gh-pages` → **Folder:** `/ (root)`
+2. **Build and deployment → Source:** **Deploy from a branch**
+3. **Branch:** `main` → **Folder:** `/docs`
 4. Click **Save**
-5. Wait 2–5 minutes, then open the URLs below
+5. Wait 2–5 minutes
 
-> If Source was set to **GitHub Actions**, the site will stay 404 until you switch to **Deploy from a branch → gh-pages**.
+You should see: **"Your site is live at https://pythra.github.io/smashfood-legal/"**
+
+> Do **not** use **GitHub Actions** as the Pages source for this repo.  
+> Do **not** use the `gh-pages` branch unless you switch the folder manually.
 
 ## Play Console URLs
 
@@ -44,6 +47,6 @@ Live on GitHub Pages:
 | Privacy policy | https://pythra.github.io/smashfood-legal/privacy-policy |
 | Data deletion | https://pythra.github.io/smashfood-legal/data-deletion |
 
-Enable **Settings → Pages → Build and deployment → Source: Deploy from a branch**, then choose branch **`gh-pages`** and folder **`/ (root)`**. See README for troubleshooting if the site shows 404.
+Set **Settings → Pages → Source: Deploy from a branch → `main` → `/docs`**. See README if the site shows 404.
 
 Update `SUPPORT_EMAIL` in `src/pages/PrivacyPolicy.jsx` and `src/pages/DataDeletion.jsx` if needed.
