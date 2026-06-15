@@ -1,16 +1,16 @@
-name: Deploy to GitHub Pages
+name: Deploy to Cloudflare Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
     steps:
       - uses: actions/checkout@v4
 
@@ -21,17 +21,12 @@ jobs:
 
       - run: npm ci
       - run: npm run build
-      - run: cp dist/index.html dist/404.html
 
-      - name: Copy build to docs folder
-        run: |
-          rm -rf docs
-          cp -r dist docs
-          touch docs/.nojekyll
-
-      - name: Commit docs for GitHub Pages
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
         with:
-          commit_message: Deploy site to docs folder
-          file_pattern: docs/**
-          branch: main
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: smashfood-legal
+          directory: dist
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}

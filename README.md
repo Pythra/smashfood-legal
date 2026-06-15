@@ -15,38 +15,30 @@ npm run dev
 
 Open http://localhost:5173
 
-## Build for hosting
+## Deploy to Cloudflare Pages (Git)
 
-```bash
-npm run build
-```
+Pushes to `main` deploy automatically via GitHub Actions.
 
-Upload the `dist/` folder to any static host (Vercel, Netlify, GitHub Pages, Cloudflare Pages).
+### One-time Cloudflare setup
 
-## GitHub Pages setup (required)
+1. Create a [Cloudflare API token](https://dash.cloudflare.com/profile/api-tokens) with **Cloudflare Pages — Edit** permission.
+2. Copy your **Account ID** from the Cloudflare dashboard (right sidebar on any zone overview).
+3. In GitHub repo **Settings → Secrets and variables → Actions**, add:
+   - `CLOUDFLARE_API_TOKEN` — your API token
+   - `CLOUDFLARE_ACCOUNT_ID` — your account ID
+4. Push to `main` (or run the **Deploy to Cloudflare Pages** workflow manually).
 
-The site is published from the **`docs/`** folder on the **`main`** branch.
+The first deploy creates the `smashfood-legal` Pages project if it does not exist yet.
 
-1. Open **https://github.com/Pythra/smashfood-legal/settings/pages**
-2. **Build and deployment → Source:** **Deploy from a branch**
-3. **Branch:** `main` → **Folder:** `/docs`
-4. Click **Save**
-5. Wait 2–5 minutes
+### Play Console URLs
 
-You should see: **"Your site is live at https://pythra.github.io/smashfood-legal/"**
-
-> Do **not** use **GitHub Actions** as the Pages source for this repo.  
-> Do **not** use the `gh-pages` branch unless you switch the folder manually.
-
-## Play Console URLs
-
-Live on GitHub Pages:
+After deploy, use your Cloudflare Pages URL (e.g. `https://smashfood-legal.pages.dev`):
 
 | Field | URL |
 |-------|-----|
-| Privacy policy | https://pythra.github.io/smashfood-legal/privacy-policy |
-| Data deletion | https://pythra.github.io/smashfood-legal/data-deletion |
+| Privacy policy | `https://smashfood-legal.pages.dev/privacy-policy` |
+| Data deletion | `https://smashfood-legal.pages.dev/data-deletion` |
 
-Set **Settings → Pages → Source: Deploy from a branch → `main` → `/docs`**. See README if the site shows 404.
+Replace the hostname if you add a custom domain under **Workers & Pages → smashfood-legal → Custom domains**.
 
 Update `SUPPORT_EMAIL` in `src/pages/PrivacyPolicy.jsx` and `src/pages/DataDeletion.jsx` if needed.
