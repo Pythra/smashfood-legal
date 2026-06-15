@@ -26,9 +26,9 @@ Connect the repo in Cloudflare — no API tokens or GitHub secrets needed.
 | Setting | Value |
 |---------|-------|
 | Framework preset | `None` |
-| Build command | `npm run build` |
+| Build command | *(leave empty)* |
 | Build output directory | `dist` |
-| Deploy command | `npx wrangler deploy` |
+| Deploy command | `npm run deploy` |
 
 `wrangler.jsonc` in the repo tells Cloudflare this is a static SPA. Routing (`/privacy-policy`, `/data-deletion`) is handled by `not_found_handling: "single-page-application"` — no separate HTML file per page.
 
