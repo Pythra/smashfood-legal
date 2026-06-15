@@ -17,18 +17,23 @@ Open http://localhost:5173
 
 ## Deploy to Cloudflare Pages (Git)
 
-Pushes to `main` deploy automatically via GitHub Actions.
+Connect the repo in Cloudflare — no API tokens or GitHub secrets needed.
 
-### One-time Cloudflare setup
+### Cloudflare dashboard settings
 
-1. Create a [Cloudflare API token](https://dash.cloudflare.com/profile/api-tokens) with **Cloudflare Pages — Edit** permission.
-2. Copy your **Account ID** from the Cloudflare dashboard (right sidebar on any zone overview).
-3. In GitHub repo **Settings → Secrets and variables → Actions**, add:
-   - `CLOUDFLARE_API_TOKEN` — your API token
-   - `CLOUDFLARE_ACCOUNT_ID` — your account ID
-4. Push to `main` (or run the **Deploy to Cloudflare Pages** workflow manually).
+**Workers & Pages → Create → Pages → Connect to Git** → select `Pythra/smashfood-legal`
 
-The first deploy creates the `smashfood-legal` Pages project if it does not exist yet.
+| Setting | Value |
+|---------|-------|
+| Framework preset | `Vite` (or `None`) |
+| Build command | `npm run build` |
+| Build output directory | `dist` |
+| Root directory | `/` (leave empty if repo root is this project) |
+| **Deploy command** | **leave empty** |
+
+Do **not** set the deploy command to `wrangler deploy` — that is for Workers, not static Pages. Cloudflare publishes `dist/` automatically after the build.
+
+Every push to `main` rebuilds and redeploys the site.
 
 ### Play Console URLs
 
