@@ -32,6 +32,6 @@ Live on GitHub Pages:
 | Privacy policy | https://pythra.github.io/smashfood-legal/privacy-policy |
 | Data deletion | https://pythra.github.io/smashfood-legal/data-deletion |
 
-Enable **Settings → Pages → Source: GitHub Actions** in the repo if the site does not appear after the first push.
+Enable **Settings → Pages → Build and deployment → Source: Deploy from a branch**, then choose branch **`gh-pages`** and folder **`/ (root)`**. The workflow runs on every push to `main` and updates `gh-pages` automatically.
 
 Update `SUPPORT_EMAIL` in `src/pages/PrivacyPolicy.jsx` and `src/pages/DataDeletion.jsx` if needed.
